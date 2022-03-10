@@ -1,0 +1,51 @@
+{% include "header.html" %}
+
+  <div class="row">
+    <div class="col-md-3 col-10 container1">
+
+      <form method="post" action="{{ url_for('edit', yxs_id=yxs_to_update.id) }}" novalidate>
+        <div class="form-group">
+          <label for="user_name">姓名</label>
+          <input type="text" class="form-control" name="user_name" id="user_name" value="{{ yxs_to_update.user_name }}">
+        </div>
+        <div class="form-group">
+          <label for="user_section">部门/学院</label>
+          <input type="text" class="form-control" name="user_section" id="user_section" value="{{ yxs_to_update.user_section }}">
+        </div>
+        <div class="form-group">
+          <label for="user_phone">联系电话</label>
+          <input type="text" class="form-control" name="user_phone" id="user_phone" value="{{ yxs_to_update.user_phone }}">
+        </div>
+        <div class="form-group">
+          <label for="yanxiushi">选择研修室</label>
+          <select class="form-control" name="yanxiushi" id="yanxiushi" value="{{ yxs_to_update.yanxiushi }}">
+            <option>研修室1</option>
+            <option>研修室2</option>
+            <option>研修室3</option>
+            <option>研修室4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="start_date">开始日期</label>
+          <input type="date" class="form-control" name="start_date" id="start_date" value="{{ yxs_to_update.start_date }}" min="2022-01-01" max="2022-12-31">
+        </div>
+        <div class="form-group">
+          <label for="end_date">结束日期</label>
+          <input type="date" class="form-control" name="end_date" id="end_date" value="{{ yxs_to_update.end_date }}" min="2022-01-01" max="2022-12-31">
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+         <p class="feedback">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <button type="submit" class="btn btn-primary btn-block">更新申请</button>
+      </form>
+    </div>
+  </div>
+
+  {% include "footer.html" %}
+
